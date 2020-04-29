@@ -10,9 +10,9 @@ namespace LibraryHoffmanАlgorithm
     {
         int encodedStringLenght = 0;
 
-        private Dictionary<char, string> tabelLetterCode;
+        private Dictionary<char, string> tabelLetterCode; //Коллекция объектов ключ значение, где ключ - символ, а значение - код в виде строки состоящей из нулей и единиц.
 
-        private Node parentNode;
+        private Node parentNode; // дерево символов
 
         public HoffmanAlgorithm()
         {
@@ -23,6 +23,7 @@ namespace LibraryHoffmanАlgorithm
 
         #region Coding
 
+        // Метод кодирует строку
         public string Coding(string inputStr)
         {
             string tempStr = string.Empty;
@@ -38,7 +39,7 @@ namespace LibraryHoffmanАlgorithm
             return tempStr;
         }
 
-
+        //Метод формирует коллекцию объектов ключ значение, где ключ-символ, а значение - количество символов в тексте 
         private Dictionary<char, int> FormPairsLetterWeight(string inputStr)
         {
             char[] letters = inputStr.ToArray();
@@ -62,6 +63,7 @@ namespace LibraryHoffmanАlgorithm
 
         }
 
+        //Метод формирует дерево символов
         private void FormParentNode(Dictionary<char, int> pairsLetterWeight)
         {
             List<Node> listNode = new List<Node>();
@@ -102,14 +104,16 @@ namespace LibraryHoffmanАlgorithm
 
         }
 
+        //Данный метод формирует коллекцию объектов ключ значение, где ключ - символ, а значение - код в виде строки состоящей из нулей и единиц.
         private void FormTableLetterCode()
         {
             if(parentNode != null)
             {
-                tabelLetterCode = parentNode.FormTableLetterKey();
+                tabelLetterCode = parentNode.FormTableLetterCode();
             }
         }
 
+        //Метод кодирует текст в строку из нулей и единиц, а затем каждые 16 нулей и единиц объединяет в символ.
         private string CodingString(string inputStr)
         {
             string tempStr = string.Empty;
@@ -151,7 +155,11 @@ namespace LibraryHoffmanАlgorithm
 
         #endregion
 
+
         #region Decoding
+
+
+        //Метод декодирует текст
         public string Decoding(string str)
         {
             string tempstr = string.Empty;
@@ -180,7 +188,7 @@ namespace LibraryHoffmanАlgorithm
             return tempstr;
         }
 
-
+        // Метод переводит закодированные символы в строку из нулей и единиц
         private string DecodingString(string str)
         {
             string tempStr = string.Empty;

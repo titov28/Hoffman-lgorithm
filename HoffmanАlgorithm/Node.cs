@@ -8,10 +8,10 @@ namespace LibraryHoffmanАlgorithm
 {
     public class Node: IComparable
     {
-        public char Letter { get; set; }
-        public int Weight { get; set; }
+        public char Letter { get; set; } // Символ
+        public int Weight { get; set; } // Вес - количество данных символов в тексте
 
-        public Node LeftNode;
+        public Node LeftNode; 
         public Node RightNode;
 
 
@@ -34,6 +34,7 @@ namespace LibraryHoffmanАlgorithm
             this.Weight = left.Weight + right.Weight;
         }
 
+        // Метод из интерфейса IComparable. В данном методе реализован алгоритм сравнения двух объектов.
         public int CompareTo(object obj)
         {
             Node temp = obj as Node;
@@ -59,8 +60,8 @@ namespace LibraryHoffmanАlgorithm
         }
 
 
-
-        public Dictionary<char, string> FormTableLetterKey()
+        //Данный метод формирует коллекцию объектов ключ значение, где ключ - символ, а значение - код в виде строки состоящей из нулей и единиц.
+        public Dictionary<char, string> FormTableLetterCode()
         {
             Dictionary<char, string> keyValuePairs = new Dictionary<char, string>();
             List<char> vectorByte = new List<char>();
@@ -69,6 +70,7 @@ namespace LibraryHoffmanАlgorithm
             return keyValuePairs;
         }
 
+        //Данный метод рекурсивно проходит по всему дереву и назначает каждому символу свой код
         private void SetCode(Dictionary<char, string> keyValuePairs, List<char> vectorByte)
         {
 
